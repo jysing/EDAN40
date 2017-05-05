@@ -52,16 +52,16 @@ optAlignments2 xs ys = snd $ mcsLen (length xs) (length ys)
        
     mcsEntry :: Int -> Int -> (Int, [AlignmentType])
     mcsEntry 0 0 = (0, [([],[])])
-    mcsEntry i 0 = (scoreSpace + fst (mcsLen (i-1) 0), attachTails (xs!!(i-1)) '-' (snd (mcsLen (i-1) 0)))
-    mcsEntry 0 j = (scoreSpace + fst (mcsLen 0 (j-1)), attachTails '-' (ys!!(j-1)) (snd (mcsLen 0 (j-1))))
+    mcsEntry i 0 = (scoreSpace + fst (mcsLen (i-1) 0), attachTails (xs!!(i-1)) '-' $ snd $ mcsLen (i-1) 0)
+    mcsEntry 0 j = (scoreSpace + fst (mcsLen 0 (j-1)), attachTails '-' (ys!!(j-1)) $ snd $ mcsLen 0 (j-1))
     mcsEntry i j = (fst $ head tmp, concatMap snd tmp)
       where
          x = xs!!(i-1)
          y = ys!!(j-1)
          tmp = maximaBy fst
-               [(score x y + fst (mcsLen (i-1) (j-1)), attachTails x y (snd (mcsLen (i-1) (j-1)))),
-               (score '-' y + fst (mcsLen i (j-1)), attachTails '-' y (snd (mcsLen i (j-1)))),
-               (score x '-' + fst (mcsLen (i-1) j), attachTails x '-' (snd (mcsLen (i-1) j)))]
+               [(score x y + fst (mcsLen (i-1) (j-1)), attachTails x y $ snd $ mcsLen (i-1) (j-1)),
+               (score '-' y + fst (mcsLen i (j-1)), attachTails '-' y $ snd $ mcsLen i (j-1)),
+               (score x '-' + fst (mcsLen (i-1) j), attachTails x '-' $ snd $ mcsLen (i-1) j)]
 
 --------------------------------------------------------------------------
 
