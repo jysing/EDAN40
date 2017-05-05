@@ -32,7 +32,7 @@ stateOfMind brain = do
   return $ rulesApply $ (map . map2) (id, pick r) brain
 
 rulesApply :: [PhrasePair] -> Phrase -> Phrase
-rulesApply = (maybe [] id.) . (transformationsApply "*" reflect)
+rulesApply xs = (maybe [] id) . (transformationsApply "*" reflect xs)
 
 reflect :: Phrase -> Phrase
 reflect = map . try $ flip lookup reflections
