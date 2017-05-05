@@ -36,9 +36,10 @@ similarityScore2 xs ys = mcsLen (length xs) (length ys)
     mcsEntry 0 0 = 0
     mcsEntry i 0 = scoreSpace + mcsLen (i-1) 0
     mcsEntry 0 j = scoreSpace + mcsLen 0 (j-1)
-    mcsEntry i j = score x y + maximum [mcsLen (i-1) (j-1), 
-                                        mcsLen (i-1) j,
-                                        mcsLen i (j-1)]
+    mcsEntry i j = score x y + maximum 
+                   [mcsLen (i-1) (j-1), 
+                   mcsLen (i-1) j,
+                   mcsLen i (j-1)]
       where
          x = xs!!(i-1)
          y = ys!!(j-1)
