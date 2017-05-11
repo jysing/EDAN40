@@ -20,6 +20,10 @@ score x y
 maximaBy :: Ord b => (a -> b) -> [a] -> [a] 
 maximaBy valueFcn xs = [a | a <- xs, valueFcn a == (maximum $ map valueFcn xs)]
 
+--maximaBy :: Ord a => (a -> b) -> [a] -> [a]
+--maximaBy valueFcn xs = map (xs !!) $ indices
+--  where indices = findIndices (== maximum xs) xs
+
 attachHeads :: a -> a -> [([a],[a])] -> [([a],[a])] 
 attachHeads h1 h2 aList = [(h1:xs,h2:ys) | (xs,ys) <- aList]
 

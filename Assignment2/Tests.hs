@@ -1,5 +1,6 @@
 import SA
 import Utilities
+import Data.List
 
 main = do
   putStrLn "\nString 1: writers, String 2: vintner\n"
