@@ -49,6 +49,8 @@ fail cs = Nothing
         Nothing -> Nothing
         Just(b, cs'') -> Just((a, b), cs'')
 
+-- The right operand of >-> named k is the function defining 
+-- the transformation.
 (>->) :: Parser a -> (a -> b) -> Parser b
 (m >-> b) cs = 
     case m cs of

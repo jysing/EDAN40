@@ -69,6 +69,7 @@ digitVal = digit >-> digitToInt >-> fromIntegral
 number' :: Integer -> Parser Integer
 number' n = digitVal #> (\ d -> number' (10*n+d))
           ! return n
+          
 number :: Parser Integer
 number = token (digitVal #> number')
 
